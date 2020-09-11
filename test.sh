@@ -1,4 +1,13 @@
 #!/bin/bash
+function control_c() {
+	if [ -e $out ]
+		then
+			rm -f $out
+		fi
+}
+
+trap control_c INT
+
 PROG=$1
 if [ ! -e $PROG ]
 then
@@ -14,19 +23,35 @@ do
 	then
 		out=$(mktemp --suffix=$PROG)
 		./$PROG < inputs/$PROG.$i.in > $out
-		if [ `diff $out outputs/$PROG.$i.out | wc -l` -ne 0 ] 
+		status="$?"
+		if [ "$status" -ne "0" ]
 		then
-			echo -n "$PROG: incorrect output for test case $i: "
+			echo -n "$PROG: return non-zero status $status for test case $i: "
 			cat inputs/$PROG.$i.in
 			num_failed=$((num_failed + 1))
+		else 
+			if [ -e $out ] 
+			then
+				if [ `diff -w $out outputs/$PROG.$i.out | wc -l` -ne 0 ] 
+				then
+					echo -n "$PROG: incorrect output for test case $i: "
+					cat inputs/$PROG.$i.in
+					num_failed=$((num_failed + 1))
+				fi
+				rm -f $out
+			else
+				echo "$PROG: cannot find output file. Execution interrupted?"
+				num_failed=$((num_failed + 1))
+			fi
 		fi
-		rm $out
 		i=$((i + 1))
 	else
 		break
 	fi
 done
+
 if [ $num_failed -eq 0 ] 
 then
 	echo "$PROG: passed"
 fi
+# vim:noexpandtab:sw=4:ts=4
