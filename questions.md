@@ -27,7 +27,7 @@ decimal number to the standard output.
 
 Sample run
 ----------
-
+```
 ooiwt@pe113:~/ex03-ooiwt$ ./binary
 1101
 13
@@ -37,7 +37,7 @@ ooiwt@pe113:~/ex03-ooiwt$ ./binary
 ooiwt@pe113:~/ex03-ooiwt$ ./binary
 10110100
 180
-
+```
 Question 2: Rectangle
 ---------------------
 
@@ -60,7 +60,7 @@ cs1010_print_string(TOP_LEFT);
 
 Sample Run
 ----------
-
+```
 ooiwt@pe113:~/ex03-ooiwt$ ./rectangle
 2 2
 ╔╗
@@ -89,7 +89,7 @@ ooiwt@pe113:~/ex03-ooiwt$ ./rectangle
 ║        ║
 ║        ║
 ╚════════╝
-
+```
 
 Question 3: Fibonnaci
 ---------------------
@@ -111,6 +111,7 @@ must not use recursion.
 
 Sample Run
 ----------
+```
 ooiwt@pe113:~/ex03-ooiwt$ ./fibonacci
 1
 1
@@ -120,3 +121,4 @@ ooiwt@pe113:~/ex03-ooiwt$ ./fibonacci
 ooiwt@pe113:~/ex03-ooiwt$ ./fibonacci
 83
 99194853094755497
+```
