@@ -1,5 +1,5 @@
 /**
- * CS1010 Semester 1 AY20/21
+ * CS1010 Semester 2 AY20/21
  * Exercise 2: Binary
  *
  * Reads in a number containing only digits 0 and 1, interpret 
